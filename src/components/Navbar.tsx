@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Button,
   IconButton,
   InputBase,
   Toolbar,
@@ -9,6 +10,8 @@ import { FC } from "react"
 import MenuIcon from "@mui/icons-material/Menu"
 import { styled, alpha } from "@mui/material/styles"
 import SearchIcon from "@mui/icons-material/Search"
+import { useAppSelector, useActions } from "../hooks/redux"
+import { selectNotes } from "../store/selectors"
 
 const Navbar: FC = () => {
   const Search = styled("div")(({ theme }) => ({
@@ -55,6 +58,13 @@ const Navbar: FC = () => {
     },
   }))
 
+  const { notes } = useAppSelector(selectNotes)
+  const { addNote } = useActions()
+
+  const addNoteHandler = () => {
+    addNote({ id: notes.length + 1, title: "Note 2", body: "Body 2" })
+  }
+
   return (
     <AppBar
       position="fixed"
@@ -78,6 +88,15 @@ const Navbar: FC = () => {
         >
           Note Keeper
         </Typography>
+
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={() => addNoteHandler()}
+        >
+          Add Note
+        </Button>
+
         <Search>
           <SearchIconWrapper>
             <SearchIcon />

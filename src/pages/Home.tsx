@@ -8,24 +8,18 @@ import {
   ListItemIcon,
   ListItemText,
   Toolbar,
-  Typography,
-  Button,
+  TextField,
 } from "@mui/material"
 import InboxIcon from "@mui/icons-material/MoveToInbox"
 import MailIcon from "@mui/icons-material/Mail"
 import Navbar from "../components/Navbar"
-import { useActions, useAppSelector } from "../hooks/redux"
+import { useAppSelector } from "../hooks/redux"
 import { selectNotes } from "../store/selectors"
 
 const drawerWidth = 240
 
 const Home = () => {
   const { notes } = useAppSelector(selectNotes)
-  const { addNote } = useActions()
-
-  const addNoteHandler = () => {
-    addNote({ id: 2, title: "Note 2", body: "Body 2" })
-  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -62,13 +56,15 @@ const Home = () => {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
 
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={() => addNoteHandler()}
-        >
-          Add Note
-        </Button>
+        <TextField
+          multiline
+          fullWidth
+          minRows={20}
+          variant="filled"
+          placeholder="Введите текст"
+          required
+          size="medium"
+        />
       </Box>
     </Box>
   )

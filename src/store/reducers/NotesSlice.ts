@@ -12,8 +12,7 @@ export const NotesSlice = createSlice({
   reducers: {
     addNote: (state, action: PayloadAction<INote>) => {
       state.notes.push(action.payload)
-      // const prevNotes = JSON.stringify(localStorage.getItem(storageKey) || "[]")
-      localStorage.setItem(storageKey, JSON.stringify(action.payload))
+      localStorage.setItem(storageKey, JSON.stringify(state.notes))
     },
   },
 })

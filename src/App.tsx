@@ -1,10 +1,10 @@
-import { useEffect } from "react"
+import { useLayoutEffect } from "react"
 import Navbar from "./components/Navbar"
 import Home from "./pages/Home"
 import { storageKey } from "./models"
 
 function App() {
-  useEffect(
+  useLayoutEffect(
     () =>
       localStorage.setItem(
         storageKey,
