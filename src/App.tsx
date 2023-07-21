@@ -1,9 +1,6 @@
-import { useLayoutEffect } from "react"
-import Home from "./pages/Home"
-import { storageKey } from "./models"
-
 import { ThemeProvider, createTheme } from "@mui/material/styles"
 import CssBaseline from "@mui/material/CssBaseline"
+import Home from "./pages/Home"
 
 const darkTheme = createTheme({
   palette: {
@@ -12,15 +9,6 @@ const darkTheme = createTheme({
 })
 
 const App = () => {
-  useLayoutEffect(
-    () =>
-      localStorage.setItem(
-        storageKey,
-        '[{ "id": 1,"title": "Note 1","body": "Body 1" }]'
-      ),
-    []
-  )
-
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />

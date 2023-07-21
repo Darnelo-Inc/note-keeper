@@ -1,9 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { INote } from "../../models"
-
-interface selectedNote {
-  note: INote | null
-}
+import { INote, selectedNote } from "../../models/Note"
 
 const initialState: selectedNote = {
   note: null,

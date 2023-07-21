@@ -1,6 +1,7 @@
-import { INote } from "./../../models/index"
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { INotes, storageKey } from "../../models"
+import { INote } from "../../models/Note"
+import { INotes } from "../../models/Notes"
+import { storageKey } from "../../models/StorageKey"
 
 const initialState: INotes = {
   notes: JSON.parse(localStorage.getItem(storageKey) || "[]"),
@@ -15,9 +16,10 @@ export const NotesSlice = createSlice({
       localStorage.setItem(storageKey, JSON.stringify(state.notes))
     },
 
-    saveNote: (state, action: PayloadAction<INote>) => {
+    saveNote: (state, action: PayloadAction<INote | null>) => {
+      if (!action.payload) return
       const index = state.notes.findIndex(
-        (note) => note.id === action.payload.id
+        (note) => note.id === action.payload!.id
       )
       state.notes[index] = action.payload
 
