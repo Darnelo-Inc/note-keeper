@@ -1,22 +1,19 @@
-import { useEffect } from "react"
-import Navbar from "./components/Navbar"
+import { ThemeProvider, createTheme } from "@mui/material/styles"
+import CssBaseline from "@mui/material/CssBaseline"
 import Home from "./pages/Home"
-import { storageKey } from "./models"
 
-function App() {
-  useEffect(
-    () =>
-      localStorage.setItem(
-        storageKey,
-        '[{ "id": 1, "title": "Note 1", "body": "Body 1" }]'
-      ),
-    []
-  )
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+})
 
+const App = () => {
   return (
-    <>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <Home />
-    </>
+    </ThemeProvider>
   )
 }
 
