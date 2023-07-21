@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.81dc1d3f.css","mappings":"AAAA,iBAGE,qBAAsB,CAEtB,QAAS,CACT,SACF","sources":["styles/global.css"],"sourcesContent":["*,\n*::before,\n*::after {\n  box-sizing: border-box;\n\n  margin: 0;\n  padding: 0;\n}\n"],"names":[],"sourceRoot":""}
