@@ -10,9 +10,11 @@ import { FC } from "react"
 import MenuIcon from "@mui/icons-material/Menu"
 import { styled, alpha } from "@mui/material/styles"
 import SearchIcon from "@mui/icons-material/Search"
+
 import { nanoid } from "nanoid"
 import { useAppSelector, useActions } from "../hooks/redux"
 import { selectNotes, selectSelectedNote } from "../store/selectors"
+import { DeleteBtn } from "./hoc/withSelected"
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -61,7 +63,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Navbar: FC = () => {
   const { notes } = useAppSelector(selectNotes)
   const selectedNote = useAppSelector(selectSelectedNote)
-  const { addNote, saveNote, setSelectedNote } = useActions()
+  const { addNote, saveNote, setSelectedNote, toggleConfirmModal } =
+    useActions()
 
   const createEmptyNote = () => {
     const id: string = nanoid()
@@ -77,6 +80,10 @@ const Navbar: FC = () => {
   const addNoteHandler = () => {
     saveNote(selectedNote)
     createEmptyNote()
+  }
+
+  const deleteHandler = () => {
+    toggleConfirmModal()
   }
 
   return (
@@ -110,6 +117,8 @@ const Navbar: FC = () => {
         >
           Add Note
         </Button>
+
+        <DeleteBtn />
 
         <Search>
           <SearchIconWrapper>

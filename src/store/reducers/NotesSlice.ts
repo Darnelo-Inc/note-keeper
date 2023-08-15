@@ -25,5 +25,7 @@ export const NotesSlice = createSlice({
 
       localStorage.setItem(storageKey, JSON.stringify(state.notes))
     },
+
+    deleteNote: (state, action) => {},
   },
 })
