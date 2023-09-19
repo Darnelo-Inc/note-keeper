@@ -5,4 +5,4 @@
 React / 
 TypeScript / 
 MUI / 
-Redux Toolkit
+Redux toolkit
